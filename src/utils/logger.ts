@@ -61,21 +61,21 @@ const consoleTransport = (): Array<ConsoleTransportInstance> => {
 };
 
 const fileLogFormat = format.printf((info) => {
-  const { level, message, timestamp, meta = {} } = info;
+  const { level, message, timestamp } = info;
 
   const logMeta: Record<string, unknown> = {};
 
-  for (const [key, value] of Object.entries(meta)) {
-    if (value instanceof Error) {
-      logMeta[key] = {
-        name: value.name,
-        message: value.message,
-        trace: value.stack || ''
-      };
-    } else {
-      logMeta[key] = value;
-    }
-  }
+  // for (const [key, value] of Object.entries(meta)) {
+  //   if (value instanceof Error) {
+  //     logMeta[key] = {
+  //       name: value.name,
+  //       message: value.message,
+  //       trace: value.stack || ''
+  //     };
+  //   } else {
+  //     logMeta[key] = value;
+  //   }
+  // }
 
   const logData = {
     level: level.toUpperCase(),
