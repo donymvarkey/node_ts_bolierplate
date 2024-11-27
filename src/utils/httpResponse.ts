@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Request, Response } from 'express';
 import { THttpResponse } from '../types';
 import logger from './logger';
@@ -31,4 +29,3 @@ export default (req: Request, res: Response, responseStatusCode: number, respons
 
   res.status(responseStatusCode).json(response);
 };
-

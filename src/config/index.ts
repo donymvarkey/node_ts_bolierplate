@@ -8,4 +8,3 @@ export default {
   env: process.env.ENV,
   server_url: process.env.SERVER_URL
 };
-

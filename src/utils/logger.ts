@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import util from 'util';
 import 'winston-mongodb';
 import { createLogger, format, transports } from 'winston';
@@ -28,15 +27,13 @@ const colorizeLevel = (level: string) => {
 };
 
 const consoleLogFormat = format.printf((info) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { level, message, timestamp, meta = {} } = info;
 
   const customLevel = colorizeLevel(level.toUpperCase());
 
   const customTimestamp = green(timestamp as string);
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const customMessage = message;
+  const customMessage: unknown = message;
 
   const customMeta = util.inspect(meta, {
     showHidden: false,
@@ -44,6 +41,7 @@ const consoleLogFormat = format.printf((info) => {
     colors: true
   });
 
+  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
   const customLog = `${customLevel} [${customTimestamp}] ${customMessage}\n${magenta('META')} ${customMeta}\n`;
 
   return customLog;
@@ -63,7 +61,6 @@ const consoleTransport = (): Array<ConsoleTransportInstance> => {
 };
 
 const fileLogFormat = format.printf((info) => {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { level, message, timestamp, meta = {} } = info;
 
   const logMeta: Record<string, unknown> = {};
@@ -82,9 +79,9 @@ const fileLogFormat = format.printf((info) => {
 
   const logData = {
     level: level.toUpperCase(),
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
     message,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
     timestamp,
     meta: logMeta
   };
@@ -123,4 +120,3 @@ export default createLogger({
   },
   transports: [...FileTransport(), ...MongodbTransport(), ...consoleTransport()]
 });
-

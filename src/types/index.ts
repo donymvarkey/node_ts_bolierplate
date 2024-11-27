@@ -30,5 +30,11 @@ type THttpError = {
   trace?: object | null;
 };
 
-export { ServerOptions, THttpResponse, THttpError };
+type InfoType = {
+  level: string;
+  message: string;
+  timestamp: Date;
+  mta: object;
+};
 
+export { ServerOptions, THttpResponse, THttpError, InfoType };

@@ -14,4 +14,3 @@ const health = (req: Request, res: Response, next: NextFunction) => {
 };
 
 export default { health };
-

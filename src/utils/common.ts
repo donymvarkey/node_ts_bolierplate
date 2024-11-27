@@ -19,4 +19,3 @@ export const getSystemHealth = () => {
     freeMemory: `${(os.freemem() / 1024 / 1024).toFixed(2)} MB`
   };
 };
-

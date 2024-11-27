@@ -21,4 +21,3 @@ export default (req: Request, _: Response, next: NextFunction) => {
       });
   }
 };
-

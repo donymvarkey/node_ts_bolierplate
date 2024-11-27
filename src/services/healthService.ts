@@ -7,4 +7,3 @@ export const getServerHealthDetails = () => {
     timestamp: Date.now()
   };
 };
-

@@ -33,4 +33,3 @@ export default (err: Error | unknown, req: Request, errorStatusCode: number = 50
 
   return errorObj;
 };
-

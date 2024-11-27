@@ -11,5 +11,4 @@ const options: ServerOptions = {
 
 const app = new Server(options);
 
-app.startServer();
-
+void app.startServer();
