@@ -8,7 +8,7 @@ import config from '../config';
 import path from 'path';
 import { red, blue, yellow, green, magenta } from 'colorette';
 import * as sourceMapSupport from 'source-map-support';
-// import { MongoDBTransportInstance } from 'winston-mongodb';
+import { MongoDBTransportInstance } from 'winston-mongodb';
 import { EApplicationEnvironment } from '../constants/application';
 
 // Linking Trace Support
@@ -102,25 +102,25 @@ const FileTransport = (): Array<FileTransportInstance> => {
   ];
 };
 
-// const MongodbTransport = (): Array<MongoDBTransportInstance> => {
-//   return [
-//     new transports.MongoDB({
-//       level: 'info',
-//       db: config.database_url as string,
-//       metaKey: 'meta',
-//       expireAfterSeconds: 3600 * 24 * 30,
-//       options: {
-//         useUnifiedTopology: true
-//       },
-//       collection: 'application-logs'
-//     })
-//   ];
-// };
+const MongodbTransport = (): Array<MongoDBTransportInstance> => {
+  return [
+    new transports.MongoDB({
+      level: 'info',
+      db: config.database_url as string,
+      metaKey: 'meta',
+      expireAfterSeconds: 3600 * 24 * 30,
+      options: {
+        // useUnifiedTopology: true
+      },
+      collection: 'application-logs'
+    })
+  ];
+};
 
 export default createLogger({
   defaultMeta: {
     meta: {}
   },
-  transports: [...FileTransport(), /* ...MongodbTransport(),*/ ...consoleTransport()]
+  transports: [...FileTransport(), ...MongodbTransport(), ...consoleTransport()]
 });
 

@@ -1,22 +1,16 @@
 {
   "name": "node_ts_boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.ts",
   "scripts": {
     "prepare": "husky",
     "dev": "cross-env NODE_ENV=development nodemon index.ts",
     "start": "cross-env NODE_ENV=production node dist/index.js",
-    "dist": "npx tsc",
+    "build": "npx tsc",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format:check": "prettier . --check",
     "format:fix": "prettier . --fix"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "npm run lint:fix",
-      "npm run format:fix"
-    ]
   },
   "keywords": [],
   "author": "",
@@ -29,12 +23,12 @@
     "@types/cors": "^2.8.17",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
     "@types/node": "^22.7.5",
     "@types/source-map-support": "^0.5.10",
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
     "nodemon": "^3.1.7",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
@@ -49,6 +43,7 @@
     "express": "^4.21.1",
     "helmet": "^8.0.0",
     "mongoose": "^8.7.1",
+    "morgan": "^1.10.0",
     "rate-limiter-flexible": "^5.0.3",
     "source-map-support": "^0.5.21",
     "ts-migrate-mongoose": "^3.8.4",
